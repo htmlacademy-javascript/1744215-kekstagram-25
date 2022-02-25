@@ -10,7 +10,7 @@ getRandomInteger(2, 500);
 // взял с: https://learn.javascript.ru/task/random-int-min-max
 
 // eslint-disable-next-line arrow-body-style
-const checkTextLength = (text, maxLength) => text.length < maxLength;
+const checkTextLength = (text, maxLength) => text.length <= maxLength;
 
 checkTextLength('мама мыла раму до суха', 12);
 // сам написал
