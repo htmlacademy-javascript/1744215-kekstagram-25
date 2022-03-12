@@ -12,7 +12,6 @@ const getRandomInteger = (min, max) => {
 
 const getRandomItemArray = (items) => items[getRandomInteger(0, items.length - 1)];
 
-
 const PICTURE_DESCRIPTIONS = [
   'Природа',
   'Закат',
