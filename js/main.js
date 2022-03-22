@@ -31,4 +31,3 @@ const addPictures = (pictures) => {
 };
 
 addPictures(pictures);
-
