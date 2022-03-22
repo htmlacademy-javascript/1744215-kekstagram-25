@@ -12,14 +12,7 @@ const createRandomComment = (id) => ({
   name: getRandomItemArray(NAMES),
 });
 
-/*
-{
-  comments: {
-    min: 10,
-    max: 10,
-  }
-}
-**/
+
 const createComments = (min, max) => {
   const randomComment = getRandomInteger(min, max);
 
@@ -32,7 +25,7 @@ const createComments = (min, max) => {
   return comments;
 };
 
-const createRandomDescription = () => getRandomInteger(0, PICTURE_DESCRIPTIONS.length - 1);
+const createRandomDescription = () => getRandomItemArray(PICTURE_DESCRIPTIONS);
 const createRandomLikeCount = () => getRandomInteger(15, 200);
 
 const createRandomPhoto = (id) => ({
