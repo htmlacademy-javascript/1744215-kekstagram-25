@@ -19,13 +19,13 @@ const onButtonClick = (evt) => {
     activeButtonElement.classList.remove('img-filters__button--active');
     currentButtonElement.classList.add('img-filters__button--active');
   }
-  
+
   handleFilterChange(currentButtonElement.id);
 };
 
 filterButtonElements.forEach((buttonElement) => {
   buttonElement.addEventListener('click', onButtonClick);
-})
+});
 
 export {
   showFilters,

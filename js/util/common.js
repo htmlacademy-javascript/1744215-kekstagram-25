@@ -5,7 +5,7 @@ const ESCAPE_KEYS = [
 
 const isEscapeKey = (evt) => ESCAPE_KEYS.includes(evt.key);
 
-const checkDuplicates = (items) => items.some((hashtag, i) => items.indexOf(hashtag, i + 1) > 0); 
+const checkDuplicates = (items) => items.some((hashtag, i) => items.indexOf(hashtag, i + 1) > 0);
 
 const removeElement = (element) => {
   element.remove();

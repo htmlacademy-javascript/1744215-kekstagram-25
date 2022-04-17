@@ -17,7 +17,7 @@ const validateQuantity = (value) => {
   return hashtags.length <= HashTagValue.MAX_LIMIT;
 };
 
-const validateDuplicates = (value) => value === '' || 
+const validateDuplicates = (value) => value === '' ||
   ! checkDuplicates(parseHashtags(value));
 
 const validateLength = (value) => value === '' ||

@@ -13,7 +13,7 @@ const hideSlider = () => {
 
 const updateSliderVolume = () => {
   const volume = sliderElement.noUiSlider.get(true);
-  
+
   if (handleSliderUpdate !== null) {
     handleSliderUpdate(volume);
   }
@@ -38,7 +38,7 @@ noUiSlider.create(sliderElement, {
 
 sliderElement.noUiSlider.on('update', () => {
   updateSliderVolume();
-});      
+});
 
 export {
   showSlider,

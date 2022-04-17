@@ -1,7 +1,7 @@
 import { renderPicture } from './picture.js';
-import { 
-  showBigPicture, 
-  hideBigPicture, 
+import {
+  showBigPicture,
+  hideBigPicture,
   setCancelButtonClickHandler,
 } from './big-picture.js';
 
@@ -12,7 +12,7 @@ const picturesElement = document.querySelector('.pictures');
 const onEscapeKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    hideBigPicture()
+    hideBigPicture();
   }
 };
 
@@ -24,7 +24,7 @@ const addPictures = (pictures) => {
 
     pictureElement.addEventListener('click', (evt) => {
       evt.preventDefault();
-      
+
       showBigPicture(picture);
       document.addEventListener('keydown', onEscapeKeydown);
     });
@@ -33,7 +33,7 @@ const addPictures = (pictures) => {
   });
 
   picturesElement.appendChild(fragment);
-  
+
   setCancelButtonClickHandler(() => {
     hideBigPicture();
     document.removeEventListener('keydown', onEscapeKeydown);
@@ -42,8 +42,8 @@ const addPictures = (pictures) => {
 
 const removePictures = () => {
   picturesElement.querySelectorAll('.picture').forEach((pictureElement) => {
-    pictureElement.remove(); 
-  })
+    pictureElement.remove();
+  });
 };
 
 export {

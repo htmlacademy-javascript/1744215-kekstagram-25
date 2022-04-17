@@ -18,7 +18,7 @@ effectListElement.addEventListener('change', (evt) => {
 
   const previousEffect = currentEffect;
   currentEffect = evt.target.value;
-  
+
   handleEffectChange(currentEffect, previousEffect);
 });
 
