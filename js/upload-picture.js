@@ -38,7 +38,6 @@ const setUploadPictureSubmitHandler = (callback) => {
 const setPreviewImage = (file) => {
   const fileName = file.name.toLowerCase();
   const matches = FILE_TYPES.some((ext) => fileName.endsWith(ext));
-
   if (matches) {
     previewImageElement.src = URL.createObjectURL(file);
   }
@@ -53,7 +52,6 @@ const resetUploadPicture = () => {
 
 const showUploadPicture = () => {
   resetUploadPicture();
-
   document.body.classList.add('modal-open');
   uploadOverlayElement.classList.remove('hidden');
 
@@ -65,10 +63,8 @@ const hideUploadPicture = () => {
   URL.revokeObjectURL(previewImageElement.src);
   previewImageElement.src = '';
   resetUploadPicture();
-
   document.body.classList.remove('modal-open');
   uploadOverlayElement.classList.add('hidden');
-
   document.removeEventListener('keydown', onEscapeKeydown);
 };
 
@@ -88,7 +84,6 @@ function onEscapeKeydown(evt) {
     hideUploadPicture();
   }
 }
-
 setScaleChangeHandler((value) => {
   previewImageElement.style.transform = `scale(${value / 100})`;
 });
@@ -124,9 +119,6 @@ uploadFormElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
   const value = hashtagsElement.value.trim();
-
-  console.log('validate', validator.validate());
-
   if (value === '' || validator.validate()) {
     const formData = new FormData(evt.target);
     handleUploadPictureSubmit(formData);
