@@ -6,6 +6,7 @@
   <script src="/js/main.js"></script>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="nouislider/nouislider.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кекстаграм</title>
 </head>
@@ -35,7 +36,11 @@
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
-              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename" required>
+              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" 
+                name="filename"
+                accept="image/jpg, image/gif, image/jpeg, image/png" 
+                required
+              >
               <label for="upload-file" class="img-upload__label  img-upload__control">Загрузить</label>
             </fieldset>
 
@@ -116,8 +121,11 @@
 
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
-                  <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
-                  <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+                  <p class="text-info"> 
+                    <label for="hashtags" class="label__hashtags"></label>
+                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
+                  </p>
+                  <textarea class="text__description" name="description" placeholder="Ваш комментарий..." maxlength="140"></textarea>
                 </fieldset>
 
                 <!-- Кнопка для отправки данных на сервер -->
@@ -151,16 +159,9 @@
           </div>
 
           <!-- Комментарии к изображению -->
-          <div class="social__comment-count">5 из <span class="comments-count">125</span> комментариев</div>
+          <div class="social__comment-count"><span class="comments-current">5</span> из <span class="comments-count">125</span> комментариев</div>
           <ul class="social__comments">
-            <li class="social__comment">
-              <img class="social__picture" src="img/avatar-4.svg" alt="Аватар комментатора фотографии" width="35" height="35">
-              <p class="social__text">Мега фото! Просто обалдеть. Как вам так удалось?</p>
-            </li>
-            <li class="social__comment">
-              <img class="social__picture" src="img/avatar-3.svg" alt="Аватар комментатора фотографии" width="35" height="35">
-               <p class="social__text">Да это фоташоп!!!!!!!!</p>
-            </li>
+          </li>
           </ul>
 
           <!-- Кнопка для загрузки новой порции комментариев -->
@@ -194,6 +195,13 @@
       </ul>
     </div>
   </footer>
+
+  <template id="comment">
+    <li class="social__comment">
+      <img class="social__picture" src="" alt="Аватар комментатора фотографии" width="35" height="35">
+      <p class="social__text"></p>
+    </li>
+  </template>
 
   <!-- Шаблон изображения случайного пользователя -->
   <template id="picture">
@@ -231,7 +239,8 @@
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
   </template>
 
-  <script  type="module" src="/js/main.js"></script>
-
+  <script src="./nouislider/nouislider.js"></script>
+  <script src="./pristine/pristine.min.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>

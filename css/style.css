@@ -1403,3 +1403,11 @@ main {
 .hidden {
   display: none;
 }
+
+.error__hash-tag {
+  color: #ffffff;
+  margin-left: -180px;
+  font-size: 15px;
+  text-transform: none;
+  margin: 0;
+}

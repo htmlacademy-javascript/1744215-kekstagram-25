@@ -1,33 +1,44 @@
-import { createPhotos as createPictures } from './random-photos.js';
-import { renderPicture } from './picture.js';
-import { showBigPicture, hideBigPicture } from './big-picture.js';
+import { addPictures, removePictures } from './gallery.js';
+import { showFilters, setFilterChangeHandler } from './filter-form.js';
+import { filterPictures } from './filters.js';
+import { 
+  showUploadPicture, 
+  hideUploadPicture, 
+  blockSubmitButton,
+  unblockSubmitButton,
+  setUploadPictureSubmitHandler,
+} from './upload-picture.js';
 
-const pictures = createPictures(25,
-  {
-    comments: {
-      min: 10,
-      max: 25,
+import { getData, sendData } from './api.js';
+import { debounce } from './util/debounce.js';
+import { showAlertMessage, showSuccessMessage, showErrorMessage } from './util/message.js';
+
+let pictures = [];
+
+getData(
+  (data) => {
+    pictures = data;
+
+    addPictures(pictures);
+    showFilters();
+
+    setFilterChangeHandler(debounce((filterId) => {
+      removePictures();
+      addPictures(filterPictures(filterId, pictures));
+    }))
+  },
+  showAlertMessage,
+);
+
+setUploadPictureSubmitHandler((formData) => {
+  blockSubmitButton();
+  sendData(
+    formData,
+    showSuccessMessage,
+    showErrorMessage, 
+    () => {
+      unblockSubmitButton();
+      hideUploadPicture();
     },
-  });
-
-
-const picturesElement = document.querySelector('.pictures');
-
-const addPictures = (pictures) => {
-  const fragment = document.createDocumentFragment();
-
-  pictures.forEach((picture) => {
-    const pictureElement = renderPicture(picture);
-
-    pictureElement.addEventListener('click', (evt) => {
-      evt.preventDefault();
-      showBigPicture(picture);
-    });
-
-    fragment.appendChild(pictureElement);
-  });
-
-  picturesElement.appendChild(fragment);
-};
-
-addPictures(pictures);
+  );
+});
