@@ -9,7 +9,7 @@ const renderComment = (comment) => {
   const pictureElement = commentElement.querySelector('.social__picture');
   pictureElement.src = avatar;
   pictureElement.alt = name;
-  
+
   commentElement.querySelector('.social__text').textContent = message;
 
   return commentElement;

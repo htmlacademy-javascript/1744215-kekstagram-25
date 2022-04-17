@@ -31,6 +31,6 @@ const sendData = (body, onSuccess, onFail, onResult) => {
 };
 
 export {
-  getData, 
+  getData,
   sendData,
 };

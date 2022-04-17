@@ -4,8 +4,8 @@ import { getFilter } from './css-filter.js';
 import { resetScale, setScaleChangeHandler } from './upload-picture-scale.js';
 import { showSlider, hideSlider, resetSlider, setSliderUpdateHandler } from './upload-picture-slider.js';
 import { setCurrentEffect, getCurrentEffect, setEffectChangeHandler } from './upload-picture-effects.js';
-import { 
-  validateMask, 
+import {
+  validateMask,
   validateQuantity,
   validateDuplicates,
   validateLength,
@@ -38,7 +38,7 @@ const setUploadPictureSubmitHandler = (callback) => {
 const setPreviewImage = (file) => {
   const fileName = file.name.toLowerCase();
   const matches = FILE_TYPES.some((ext) => fileName.endsWith(ext));
-  
+
   if (matches) {
     previewImageElement.src = URL.createObjectURL(file);
   }
@@ -53,7 +53,7 @@ const resetUploadPicture = () => {
 
 const showUploadPicture = () => {
   resetUploadPicture();
-  
+
   document.body.classList.add('modal-open');
   uploadOverlayElement.classList.remove('hidden');
 
@@ -65,10 +65,10 @@ const hideUploadPicture = () => {
   URL.revokeObjectURL(previewImageElement.src);
   previewImageElement.src = '';
   resetUploadPicture();
-  
+
   document.body.classList.remove('modal-open');
   uploadOverlayElement.classList.add('hidden');
-  
+
   document.removeEventListener('keydown', onEscapeKeydown);
 };
 
@@ -87,15 +87,15 @@ function onEscapeKeydown(evt) {
     evt.preventDefault();
     hideUploadPicture();
   }
-};
+}
 
 setScaleChangeHandler((value) => {
   previewImageElement.style.transform = `scale(${value / 100})`;
-})
+});
 
 setSliderUpdateHandler((volume) => {
   previewImageElement.style.filter = getFilter(getCurrentEffect(), volume);
-})
+});
 
 setEffectChangeHandler((currentEffect, previousEffect) => {
   previewImageElement.classList.remove(`effects__preview--${previousEffect}`);
@@ -108,7 +108,7 @@ setEffectChangeHandler((currentEffect, previousEffect) => {
   }
 
   resetSlider();
-})
+});
 
 validator.addValidator(hashtagsElement, validateQuantity, 'не более 5 хеш-тегов', 1, true);
 validator.addValidator(hashtagsElement, validateLength, 'максимальная длина одного хэш-тега 20 символов, включая решётку', 1, true);
@@ -118,7 +118,7 @@ validator.addValidator(hashtagsElement, validateDuplicates, 'хеш-теги н�
 cancelButtonElement.addEventListener('click', (evt) => {
   evt.preventDefault();
   hideUploadPicture();
-})
+});
 
 uploadFormElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -126,9 +126,9 @@ uploadFormElement.addEventListener('submit', (evt) => {
   const value = hashtagsElement.value.trim();
 
   console.log('validate', validator.validate());
-  
+
   if (value === '' || validator.validate()) {
-    const formData = new FormData(evt.target)
+    const formData = new FormData(evt.target);
     handleUploadPictureSubmit(formData);
   }
 });

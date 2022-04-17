@@ -40,7 +40,7 @@ const removeComments = () => {
 
 const onCommentsLoader = (evt) => {
   evt.preventDefault();
-     
+
   const nextComments = currentComments.slice(count, count + SHOW_COMMENTS_COUNT);
   addComments(nextComments);
   count += nextComments.length;
@@ -48,7 +48,7 @@ const onCommentsLoader = (evt) => {
   commentsCurrentElement.textContent = count;
 
   if (count >= currentComments.length) {
-    commentsLoaderElement.classList.add('hidden'); 
+    commentsLoaderElement.classList.add('hidden');
   }
 };
 
@@ -57,16 +57,16 @@ const showBigPicture = (picture) => {
 
   count = 0;
   currentComments = comments;
-  
+
   const nextComments = currentComments.slice(0, SHOW_COMMENTS_COUNT);
-  
+
   imageElement.src = url;
   imageElement.alt = description;
   socialCaptioElement.textContent = description;
   likesCountElement.textContent = likes;
   commentsCurrentElement.textContent = nextComments.length;
   commentsCountElement.textContent = currentComments.length;
-  
+
   removeComments();
   addComments(nextComments);
 
@@ -79,7 +79,7 @@ const showBigPicture = (picture) => {
     commentsLoaderElement.classList.remove('hidden');
     commentsLoaderElement.addEventListener('click', onCommentsLoader);
   } else {
-    commentsLoaderElement.classList.add('hidden'); 
+    commentsLoaderElement.classList.add('hidden');
   }
 
   cancelButtonElement.addEventListener('click', onCancelButtonClick);

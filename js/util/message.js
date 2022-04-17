@@ -4,8 +4,8 @@ const successMessageTemplateElement = document.querySelector('#success').content
 const errorMessageTemplateElement = document.querySelector('#error').content.querySelector('.error');
 
 const showMessage = (type) => {
-  const templateElement = type === 'success' 
-    ? successMessageTemplateElement 
+  const templateElement = type === 'success'
+    ? successMessageTemplateElement
     : errorMessageTemplateElement;
 
   const messageElement = templateElement.cloneNode(true);
@@ -45,7 +45,6 @@ const showErrorMessage = () => showMessage('error');
 
 const showAlertMessage = (message, delay = 5000) => {
   const container = document.createElement('div');
-  
   const style = container.style;
   style.zIndex = 100;
   style.position = 'absolute';

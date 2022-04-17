@@ -1,9 +1,9 @@
 import { addPictures, removePictures } from './gallery.js';
 import { showFilters, setFilterChangeHandler } from './filter-form.js';
 import { filterPictures } from './filters.js';
-import { 
-  showUploadPicture, 
-  hideUploadPicture, 
+import {
+  showUploadPicture,
+  hideUploadPicture,
   blockSubmitButton,
   unblockSubmitButton,
   setUploadPictureSubmitHandler,
@@ -25,7 +25,7 @@ getData(
     setFilterChangeHandler(debounce((filterId) => {
       removePictures();
       addPictures(filterPictures(filterId, pictures));
-    }))
+    }));
   },
   showAlertMessage,
 );
@@ -35,7 +35,7 @@ setUploadPictureSubmitHandler((formData) => {
   sendData(
     formData,
     showSuccessMessage,
-    showErrorMessage, 
+    showErrorMessage,
     () => {
       unblockSubmitButton();
       hideUploadPicture();
