@@ -2,7 +2,6 @@ import { addPictures, removePictures } from './gallery.js';
 import { showFilters, setFilterChangeHandler } from './filter-form.js';
 import { filterPictures } from './filters.js';
 import {
-  showUploadPicture,
   hideUploadPicture,
   blockSubmitButton,
   unblockSubmitButton,
