@@ -13,6 +13,7 @@ const onEscapeKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     hideBigPicture();
+    document.removeEventListener('keydown', onEscapeKeydown);
   }
 };
 
