@@ -5,8 +5,8 @@ const ScaleValue = {
 };
 
 const scaleValueElement = document.querySelector('.scale__control--value');
-const scaleSmallerButton = document.querySelector('.scale__control--smaller');
-const scaleBiggerButton = document.querySelector('.scale__control--bigger');
+const scaleSmallerButtonElement = document.querySelector('.scale__control--smaller');
+const scaleBiggerButtonElement = document.querySelector('.scale__control--bigger');
 
 let currentScale = ScaleValue.MAX;
 let handleScaleChange = null;
@@ -25,14 +25,14 @@ const setScaleChangeHandler = (callback) => {
   handleScaleChange = callback;
 };
 
-scaleSmallerButton.addEventListener('click', () => {
+scaleSmallerButtonElement.addEventListener('click', () => {
   const nextScale = currentScale - ScaleValue.STEP;
   if (nextScale >= ScaleValue.MIN) {
     renderScale(nextScale);
   }
 });
 
-scaleBiggerButton.addEventListener('click', () => {
+scaleBiggerButtonElement.addEventListener('click', () => {
   const nextScale = currentScale + ScaleValue.STEP;
   if (nextScale <= ScaleValue.MAX) {
     renderScale(nextScale);

@@ -44,8 +44,8 @@ const showSuccessMessage = () => showMessage('success');
 const showErrorMessage = () => showMessage('error');
 
 const showAlertMessage = (message, delay = 5000) => {
-  const container = document.createElement('div');
-  const style = container.style;
+  const containerElement = document.createElement('div');
+  const style = containerElement.style;
   style.zIndex = 100;
   style.position = 'absolute';
   style.left = 0;
@@ -56,11 +56,11 @@ const showAlertMessage = (message, delay = 5000) => {
   style.textAlign = 'center';
   style.backgroundColor = 'red';
 
-  container.textContent = message;
+  containerElement.textContent = message;
 
-  document.body.append(container);
+  document.body.append(containerElement);
 
-  setTimeout(removeElement, delay, container);
+  setTimeout(removeElement, delay, containerElement);
 };
 
 
